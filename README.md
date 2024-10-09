@@ -1,4 +1,3 @@
-
 # MediConnect-Demo
 
 A demo version of a real-time medicine availability and pre-order system that connects users with nearby pharmacies for stock checks and reservations.
@@ -17,6 +16,12 @@ A demo version of a real-time medicine availability and pre-order system that co
 - **Backend**: Python, FastAPI
 - **Database**: MySQL
 - **Geolocation**: Google Maps API
+
+## 👥 Team Members
+
+| [![TechShreyash](https://avatars.githubusercontent.com/u/82265247?v=4)](https://github.com/TechShreyash) | [![Priyanshu](https://avatars.githubusercontent.com/u/180011242?v=4)](https://github.com/priyanshu-matrix) | [![Shourya](https://avatars.githubusercontent.com/u/182610033?v=4)](https://github.com/Shourya-31) | [![Swastik](https://avatars.githubusercontent.com/u/179001846?v=4)](https://github.com/swastikd16) |
+|:---:|:---:|:---:|:---:|
+| [**Shreyash Kumar Dheemar**](https://github.com/TechShreyash) | [**Priyanshu Kumar Pandey**](https://github.com/priyanshu-matrix) | [**Shourya**](https://github.com/Shourya-31) | [**Swastik**](https://github.com/swastikd16) |
 
 ## 📜 License
 
