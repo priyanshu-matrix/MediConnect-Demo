@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from typing import Literal
 
 from utils import database
@@ -6,6 +7,14 @@ from utils.logger import Logger
 
 app = FastAPI()
 logger = Logger(__name__)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/")
@@ -23,10 +32,10 @@ async def api_auth(request: Request):
     password: str = data.get("password")
 
     if request_type == "new_auth":
-        result = await database.new_auth(email, password)
+        status, message = await database.new_auth(email, password)
     elif request_type == "check_auth":
-        result = await database.check_auth(email, password)
+        status, message = await database.check_auth(email, password)
     else:
-        result = False
+        status, message = False, "Invalid Request Type"
 
-    return {"status": result}
+    return {"status": status, "message": message}

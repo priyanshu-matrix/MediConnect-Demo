@@ -19,11 +19,10 @@ AUTHDB = DB["AUTHDB"]
 async def new_auth(email: str, password: str) -> bool:
     auth = await AUTHDB.find_one({"email": email})
     if auth:
-        # Email is already registered
-        return False
+        return False, "Email is already registered, please login"
 
     await AUTHDB.insert_one({"email": email, "password": password})
-    return True
+    return True, "Account Created Successfully"
 
 
 async def check_auth(email: str, password: str) -> bool:
@@ -31,8 +30,10 @@ async def check_auth(email: str, password: str) -> bool:
     if auth:
         if auth["password"] == password:
             return True
-
-    return False
+        else:
+            return False, "Invalid Password"
+    else:
+        return False, "Invalid Email"
 
 
 # Shop Fucntions
