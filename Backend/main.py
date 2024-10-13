@@ -39,3 +39,25 @@ async def api_auth(request: Request):
         status, message = False, "Invalid Request Type"
 
     return {"status": status, "message": message}
+
+
+@app.post("/api/shop")
+async def api_auth(request: Request):
+    data: dict = await request.json()
+    logger.info(f"Shop Data: {data}")
+
+    request_type: Literal["update_shop", "get_shop"] = data.get("request_type")
+    email: str = data.get("email")
+    shop_data: dict = data.get("shop_data")
+
+    if request_type == "update_shop":
+        await database.update_shop(email, shop_data)
+        status, message = True, "Shop Data Updated Successfully"
+
+    elif request_type == "get_shop":
+        status, message = await database.get_shop(email)
+
+    else:
+        status, message = False, "Invalid Request Type"
+
+    return {"status": status, "message": message}

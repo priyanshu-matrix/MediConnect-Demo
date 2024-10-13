@@ -1,7 +1,6 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 
 from config import MONGODB_URL
-from utils.extras import get_random_id
 from utils.logger import Logger
 
 logger = Logger(__name__)
@@ -10,10 +9,12 @@ logger.info("Connecting to MongoDB")
 DB = AsyncIOMotorClient(MONGODB_URL)["MediConnect"]
 logger.info("Connected to MongoDB")
 
-SHOPDB = DB["SHOPDB"]
 AUTHDB = DB["AUTHDB"]
+SHOPDB = DB["SHOPDB"]
 
-# Auth Fucntions
+# Auth Functions
+
+# Auth Data {"email": str, "password": str}
 
 
 async def new_auth(email: str, password: str) -> bool:
@@ -36,9 +37,15 @@ async def check_auth(email: str, password: str) -> bool:
         return False, "Invalid Email"
 
 
-# Shop Fucntions
+# Shop Functions
+
+# Shop Data {"email": str, "shop_name": str, "shop_address": str, "shop_phone": str}
 
 
-async def add_shop(data):
-    data["shop_id"] = get_random_id(6)
-    await SHOPDB.insert_one(data)
+async def update_shop(email, data):
+    await SHOPDB.update_one({"email": email}, {"$set": data}, upsert=True)
+
+
+async def get_shop(email: str):
+    shop_data = await SHOPDB.find_one({"email": email})
+    return True, shop_data
