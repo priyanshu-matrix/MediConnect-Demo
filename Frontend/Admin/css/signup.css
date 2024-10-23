@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.maindiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.signup-container {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* Close alternative to SF Pro */
+    font-weight: bold; /* Make it bold */
+    font-size: 24px; /* Adjust size if needed */
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.signup-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    margin-bottom: 20px;
+}
+
+.signup-btn {
+    width: 100%;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for background and transform */
+}
+
+.signup-btn:hover {
+    background-color: #0056b3; /* Change to a slightly darker blue on hover */
+    transform: scale(1.05); /* Slightly increase the size */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+
+
+.form-text {
+    text-align: center;
+}
+
+/* Footer Styling */
+.footer {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Optional media query for mobile responsiveness */
+@media (max-width: 576px) {
+    .signup-container {
+        padding: 15px;
+    }
+}
